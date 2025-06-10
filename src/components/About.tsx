@@ -1,11 +1,21 @@
-
 import { Card } from "@/components/ui/card";
 import { Users, MessageCircle, Lightbulb, Award, Heart, Zap } from "lucide-react";
 import PhotoGallery from "./PhotoGallery";
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useEffect, useState } from 'react';
+import { ImageData, getImagesFromDirectory } from '@/lib/imageUtils';
 
 const About = () => {
   const { t } = useLanguage();
+  const [personalPhotos, setPersonalPhotos] = useState<ImageData[]>([]);
+
+  useEffect(() => {
+    const loadImages = async () => {
+      const images = getImagesFromDirectory('about');
+      setPersonalPhotos(images);
+    };
+    loadImages();
+  }, []);
 
   const skills = [
     { name: "Leadership", icon: Award, description: "Guiding teams towards sustainable solutions" },
@@ -14,45 +24,6 @@ const About = () => {
     { name: "Innovation", icon: Lightbulb, description: "Developing creative approaches to forest management" },
     { name: "Creativity", icon: Heart, description: "Finding artistic solutions to environmental challenges" },
     { name: "Hard Work", icon: Zap, description: "Dedicated commitment to environmental conservation" },
-  ];
-
-  const personalPhotos = [
-    {
-      id: "about-1",
-      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Evariste in the field",
-      caption: "Field work and research"
-    },
-    {
-      id: "about-2",
-      src: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Studying in nature",
-      caption: "Learning from nature"
-    },
-    {
-      id: "about-3",
-      src: "https://images.unsplash.com/photo-1569163139394-de4e4f43e4e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Environmental conservation",
-      caption: "Conservation activities"
-    },
-    {
-      id: "about-4",
-      src: "https://images.unsplash.com/photo-1473773508845-188df298d2d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Team collaboration",
-      caption: "Working with community"
-    },
-    {
-      id: "about-5",
-      src: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Nature walks",
-      caption: "Exploring forest ecosystems"
-    },
-    {
-      id: "about-6",
-      src: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Forestry studies",
-      caption: "Academic pursuits"
-    }
   ];
 
   const languages = [
@@ -118,9 +89,9 @@ const About = () => {
           </div>
           
           {/* Photo Gallery */}
-          <div className="order-first xl:order-last">
+          <div>
             <h3 className="text-xl sm:text-2xl font-semibold text-forest mb-4 sm:mb-6">Gallery</h3>
-            <PhotoGallery photos={personalPhotos} columns={3} />
+            <PhotoGallery photos={personalPhotos} columns={4} />
           </div>
         </div>
       </div>
