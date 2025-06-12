@@ -5,7 +5,7 @@ import { Users, Mail, Briefcase } from "lucide-react";
 const Referees = () => {
   const referees = [
     {
-      name: "Gedeon IRAKIZA",
+      name: "Gedeon MANIRAKIZA",
       title: "Head of Forestry Department",
       organization: "IPRC Kitabi",
       icon: Briefcase,
