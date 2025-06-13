@@ -14,8 +14,8 @@ const Hero = () => {
   const downloadCV = () => {
     // Create a downloadable CV link
     const link = document.createElement('a');
-    link.href = '/evascv.pdf';
-    link.download = 'evascv.pdf';
+    link.href = '/Evariste.pdf';
+    link.download = 'Evariste.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
