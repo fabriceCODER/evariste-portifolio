@@ -79,7 +79,7 @@ const Hero = () => {
               onClick={downloadCV}
               variant="outline"
               size="lg"
-              className="border-white/50 text-white hover:bg-white/10 px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 btn-touch w-full sm:w-auto"
+              className="border-white/50 text-blue-400 px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 btn-touch w-full sm:w-auto"
             >
               {t('hero.downloadCV')}
             </Button>
